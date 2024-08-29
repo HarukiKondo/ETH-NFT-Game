@@ -1,18 +1,57 @@
 # Create your first NFT game.
 
-![](/packages/client/public/ETH-game-banner.png)
+section １*lesson-3*スマートコントラクトを作ろう からスタートできる状態にしています。
 
-このコースを始めるには、下記のステップを実行してください。
+## 動かし方
 
-1. あなたのGithubアカウントにこのレポジトリをフォークしましょう。
+- セットアップ
 
-2. クローンしたレポジトリをあなたのローカル環境にダウンロードしましょう。
+  ```bash
+  yarn
+  ```
 
-3. ターミナルを開き、ディレクトリのルートで `yarn install` を実行します。
+- フロントエンド
 
-4. `yarn client start` を実行してプロジェクトを開始します。
+  - 起動
 
-5. コーディングを始めましょう。
+    下記のコマンドを順番に実行する。
 
-----
-Banner logo created by modifying  "3dicons - Open source 3D icon library" © [vijay verma](https://www.figma.com/community/file/1030350068466019692) (Licensed under CC BY 4.0).
+    ```bash
+    export NODE_OPTIONS=--openssl-legacy-provider
+    ```
+
+    ```bash
+    yarn client start
+    ```
+
+  - ビルド
+
+    ```bash
+    yarn client build
+    ```
+
+- スマートコントラクト
+
+  - コンパイル
+
+    ```bash
+    yarn contract compile
+    ```
+
+  - テスト
+
+    ```bash
+    yarn contract test
+    ```
+
+  - クリーン
+
+    ```bash
+    yarn contract clean
+    ```
+
+  - ローカルノード立ちあげ
+
+    ```bash
+    yarn contract local
+    ```
