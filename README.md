@@ -17,10 +17,6 @@ section １*lesson-3*スマートコントラクトを作ろう からスター�
     下記のコマンドを順番に実行する。
 
     ```bash
-    export NODE_OPTIONS=--openssl-legacy-provider
-    ```
-
-    ```bash
     yarn client start
     ```
 
