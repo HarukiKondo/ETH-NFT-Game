@@ -51,3 +51,7 @@ section １*lesson-3*スマートコントラクトを作ろう からスター�
     ```bash
     yarn contract local
     ```
+
+### 参考文献
+
+1. [Qita - yarn で Error: self signed certificate in certificate chain と認証エラーが発生したら](https://qiita.com/naru0504/items/06b687d6a174286756da)
