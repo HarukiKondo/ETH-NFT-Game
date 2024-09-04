@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import twitterLogo from "./assets/twitter-logo.svg";
 import "./App.css";
 import SelectCharacter from "./Components/SelectCharacter";
+import { CONTRACT_ADDRESS, transformCharacterData } from "./constants";
+import myEpicGame from "./utils/MyEpicGame.json";
+import { ethers } from "ethers";
 
 // Constantsを宣言する: constとは値書き換えを禁止した変数を宣言する方法です。
 const TWITTER_HANDLE = "UNCHAIN";
@@ -55,6 +58,10 @@ const App = () => {
 				alert("Get MetaMask!");
 				return;
 			}
+
+			// ユーザーがウォレットを持っているか確認します。
+			checkIfWalletIsConnected();
+
 			// ウォレットアドレスに対してアクセスをリクエストしています。
 			const accounts = await ethereum.request({
 				method: "eth_requestAccounts",
@@ -62,6 +69,9 @@ const App = () => {
 			// ウォレットアドレスを currentAccount に紐付けます。
 			console.log("Connected", accounts[0]);
 			setCurrentAccount(accounts[0]);
+
+			// ユーザーが Sepolia に接続されているか確認します。
+			checkNetwork();
 		} catch (error) {
 			console.log(error);
 		}
@@ -93,10 +103,57 @@ const App = () => {
 		}
 	};
 
+	/**
+	 * 接続中のブロックチェーンネットワークの種類を判別するメソッド
+	 */
+	const checkNetwork = async () => {
+		try {
+			if (window.ethereum.networkVersion !== "11155111") {
+				alert("Sepolia Test Network に接続してください!");
+			} else {
+				console.log("Sepolia に接続されています.");
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	// ページがロードされたときに useEffect()内の関数が呼び出されます。
 	useEffect(() => {
 		checkIfWalletIsConnected();
 	}, []);
+
+	// ページがロードされたときに useEffect()内の関数が呼び出されます。
+	useEffect(() => {
+		/**
+		 * NFTメタデータを取得するメソッド
+		 */
+		const fetchNFTMetadata = async () => {
+			console.log("Checking for Character NFT on address:", currentAccount);
+
+			const provider = new ethers.providers.Web3Provider(window.ethereum);
+			const signer = provider.getSigner();
+			const gameContract = new ethers.Contract(
+				CONTRACT_ADDRESS,
+				myEpicGame.abi,
+				signer
+			);
+			// コントラクトのcheckIfUserHasNFTメソッドを呼び出す。
+			const txn = await gameContract.checkIfUserHasNFT();
+			if (txn.name) {
+				console.log("User has character NFT");
+				setCharacterNFT(transformCharacterData(txn));
+			} else {
+				console.log("No character NFT found");
+			}
+		};
+
+		// 接続されたウォレットがある場合のみ、下記を実行します。
+		if (currentAccount) {
+			console.log("CurrentAccount:", currentAccount);
+			fetchNFTMetadata();
+		}
+	}, [currentAccount]);
 
 	return (
 		<div className="App">
