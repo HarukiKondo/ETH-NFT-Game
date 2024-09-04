@@ -11,8 +11,6 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 // Base64.sol からヘルパー関数をインポートする。
 import "./libraries/Base64.sol";
 
-import "hardhat/console.sol";
-
 /**
  * MyEpicGame Contract
  */
@@ -85,10 +83,6 @@ contract MyEpicGame is ERC721 {
         attackDamage: characterAttackDmg[i]
       }));
       CharacterAttributes memory character = defaultCharacters[i];
-
-	    // hardhat の console.log() では、任意の順番で最大4つのパラメータを指定できます。
-	    // 使用できるパラメータの種類: uint, string, bool, address
-      console.log("Done initializing %s w/ HP %s, img %s", character.name, character.hp, character.imageURI);
     }
     
     // 次の NFT が Mint されるときのカウンターをインクリメントします。
@@ -102,12 +96,6 @@ contract MyEpicGame is ERC721 {
       maxHp: bossHp,
       attackDamage: bossAttackDamage
     });
-    console.log(
-      'Done initializing boss %s w/ HP %s, img %s',
-      bigBoss.name,
-      bigBoss.hp,
-      bigBoss.imageURI
-    );
   }
   
   /**
@@ -130,8 +118,6 @@ contract MyEpicGame is ERC721 {
       maxHp: defaultCharacters[_characterIndex].maxHp,
       attackDamage: defaultCharacters[_characterIndex].attackDamage
     });
-
-    console.log("Minted NFT w/ tokenId %s and characterIndex %s", newItemId, _characterIndex);
 
     // NFTの所有者を簡単に確認できるようにします。
     nftHolders[msg.sender] = newItemId;
@@ -180,10 +166,7 @@ contract MyEpicGame is ERC721 {
     // 1. プレイヤーのNFTの状態を取得します。
     uint256 nftTokenIdOfPlayer = nftHolders[msg.sender];
     CharacterAttributes storage player = nftHolderAttributes[nftTokenIdOfPlayer];
-    
-    console.log("\nPlayer w/ character %s about to attack. Has %s HP and %s AD", player.name, player.hp, player.attackDamage);
-    console.log("Boss %s has %s HP and %s AD", bigBoss.name, bigBoss.hp, bigBoss.attackDamage);
-
+  
     // 2. プレイヤーのHPが0以上であることを確認する。
     require (
       player.hp > 0,
@@ -208,10 +191,6 @@ contract MyEpicGame is ERC721 {
       player.hp = player.hp - bigBoss.attackDamage;
     }
 
-    // プレイヤーの攻撃をターミナルに出力する。
-    console.log("Player attacked boss. New boss hp: %s", bigBoss.hp);
-    // ボスの攻撃をターミナルに出力する。
-    console.log("Boss attacked player. New player hp: %s\n", player.hp);
     // ボスへの攻撃が完了したことをフロントエンドに伝えます。
     emit AttackComplete(bigBoss.hp, player.hp);
   }
