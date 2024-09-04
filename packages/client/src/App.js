@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import twitterLogo from "./assets/twitter-logo.svg";
 import "./App.css";
 import SelectCharacter from "./Components/SelectCharacter";
+import Arena from "./Components/Arena";
 import { CONTRACT_ADDRESS, transformCharacterData } from "./constants";
 import myEpicGame from "./utils/MyEpicGame.json";
 import { ethers } from "ethers";
@@ -100,6 +101,10 @@ const App = () => {
 			// ユーザーはWEBアプリにログインしており、かつ NFT キャラクターを持っていない場合、WEBアプリ上に、を表示します。
 		} else if (currentAccount && !characterNFT) {
 			return <SelectCharacter setCharacterNFT={setCharacterNFT} />;
+		} else if (currentAccount && characterNFT) {
+			return (
+				<Arena characterNFT={characterNFT} setCharacterNFT={setCharacterNFT} />
+			);
 		}
 	};
 
