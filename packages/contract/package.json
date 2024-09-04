@@ -29,6 +29,7 @@
     "deploy": "npx hardhat run scripts/deploy.js --network sepolia"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "ethers": "5.4.7"
   }
 }
