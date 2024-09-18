@@ -1,32 +1,50 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
-const hre = require("hardhat");
-
-async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
-
-  const lockedAmount = hre.ethers.utils.parseEther("0.001");
-
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
-
-  await lock.deployed();
-
-  console.log(
-    `Lock with ${ethers.utils.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
+const main = async () => {
+  // これにより、`MyEpicGame` コントラクトがコンパイルされます。
+  // コントラクトがコンパイルされたら、コントラクトを扱うために必要なファイルが
+  // `artifacts` ディレクトリの直下に生成されます。
+  const gameContractFactory = await hre.ethers.getContractFactory("MyEpicGame");
+  // Hardhat がローカルの Ethereum ネットワークを、コントラクトのためだけに作成します。
+  const gameContract = await gameContractFactory.deploy(
+    ["ZORO", "NAMI", "USOPP"], // キャラクターの名前
+    [
+      "https://i.imgur.com/TZEhCTX.png", // キャラクターの画像
+      "https://i.imgur.com/WVAaMPA.png",
+      "https://i.imgur.com/pCMZeiM.png",
+    ],
+    [100, 200, 300],
+    [100, 50, 25],
+    "CROCODILE", // Bossの名前
+    "https://i.imgur.com/BehawOh.png", // Bossの画像
+    10000, // Bossのhp
+    50 // Bossの攻撃力
   );
-}
+  // ここでは、nftGame コントラクトが、
+  // ローカルのブロックチェーンにデプロイされるまで待つ処理を行っています。
+  const nftGame = await gameContract.deployed();
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+  console.log("Contract deployed to:", nftGame.address);
+  let txn;
+  // 3体のNFTキャラクターの中から、3番目のキャラクターを Mint しています。
+  txn = await gameContract.mintCharacterNFT(2);
+
+  // Minting が仮想マイナーにより、承認されるのを待ちます。
+  await txn.wait();
+  txn = await gameContract.attackBoss();
+  await txn.wait();
+  console.log("First attack.");
+  txn = await gameContract.attackBoss();
+  await txn.wait();
+  console.log("Second attack.");
+
+  console.log("Done!");
+};
+const runMain = async () => {
+  try {
+    await main();
+    process.exit(0);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+runMain();
