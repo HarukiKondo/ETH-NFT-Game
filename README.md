@@ -82,3 +82,4 @@ section １*lesson-3*スマートコントラクトを作ろう からスター�
 ### 参考文献
 
 1. [Qita - yarn で Error: self signed certificate in certificate chain と認証エラーが発生したら](https://qiita.com/naru0504/items/06b687d6a174286756da)
+2. [SetUp Custom hardhat Compiler](https://hardhat.org/hardhat-runner/docs/other-guides/using-custom-solc)
