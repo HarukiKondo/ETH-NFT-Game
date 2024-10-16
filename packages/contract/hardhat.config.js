@@ -3,6 +3,9 @@ const {
 	TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD,
 } = require("hardhat/builtin-tasks/task-names");
 const path = require("path");
+require("dotenv").config();
+
+const { PRIVATE_KEY, ALCHEMY_API_KEY } = process.env;
 
 /**
  * カスタムコンパイラーを動かすための設定
@@ -32,11 +35,16 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args, hre, runSuper) => {
 module.exports = {
 	solidity: "0.8.24",
 	networks: {
-		/*
-    sepolia: {
-      url: "YOUR_ALCHEMY_API_URL",
-      accounts: ["YOUR_PRIVATE_SEPOLIA_ACCOUNT_KEY"],
-    },
-    */
+		local: {
+			url: "http://127.0.0.1:8545/",
+			accounts: [
+				// これは開発用！本番では絶対に使わないこと！！！
+				"0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
+			],
+		},
+		sepolia: {
+			url: `https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}`,
+			accounts: [PRIVATE_KEY],
+		},
 	},
 };

@@ -25,7 +25,11 @@
     "clean": "npx hardhat clean",
     "test": "npx hardhat test",
     "local": "npx hardhat node",
-    "run:script":"npx hardhat run scripts/run.js",
+    "run:script": "npx hardhat run scripts/run.js",
+    "deploy:local": "npx hardhat run scripts/deploy.js --network local",
     "deploy": "npx hardhat run scripts/deploy.js --network sepolia"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
   }
 }
