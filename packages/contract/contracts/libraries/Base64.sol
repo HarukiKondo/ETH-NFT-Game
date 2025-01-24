@@ -10,7 +10,9 @@ library Base64 {
     bytes internal constant TABLE =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-    /// @notice Encodes some bytes to the base64 representation
+    /**
+     * バイトデータをエンコードする関数
+     */
     function encode(bytes memory data) internal pure returns (string memory) {
         uint256 len = data.length;
         if (len == 0) return "";

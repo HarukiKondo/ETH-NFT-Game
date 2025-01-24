@@ -1,6 +1,11 @@
+/**
+ * スマートコントラクトをデプロイするためのスクリプト
+ */
 const main = async () => {
 	const gameContractFactory = await hre.ethers.getContractFactory("MyEpicGame");
 
+	// MyEpicGame.sol コントラクトをローカルのブロックチェーンにデプロイします。
+	// コンストラクターで定義された通りに引数を設定する。
 	const gameContract = await gameContractFactory.deploy(
 		["ZORO", "NAMI", "USOPP"], // キャラクターの名前
 		[
@@ -21,6 +26,7 @@ const main = async () => {
 
 	console.log("Contract deployed to:", nftGame.address);
 };
+
 const runMain = async () => {
 	try {
 		await main();

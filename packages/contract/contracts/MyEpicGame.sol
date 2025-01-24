@@ -3,11 +3,9 @@ pragma solidity >=0.8.0;
 
 // NFT発行のコントラクト ERC721.sol をインポートします。
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-
 //OpenZeppelinが提供するヘルパー機能をインポートします。
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
-
 // Base64.sol からヘルパー関数をインポートする。
 import "./libraries/Base64.sol";
 
@@ -25,6 +23,7 @@ contract MyEpicGame is ERC721 {
     uint attackDamage;
   }
 
+  // ボスのデータを格納するBigBoss型の構造体
   struct BigBoss {
     string name;
     string imageURI;
@@ -32,7 +31,7 @@ contract MyEpicGame is ERC721 {
     uint maxHp;
     uint attackDamage;
   }
-
+  // BigBoss型の変数 bigBoss を作成します。
   BigBoss public bigBoss;
   
   //OpenZeppelin が提供する tokenIds を簡単に追跡するライブラリを呼び出しています。
@@ -56,9 +55,10 @@ contract MyEpicGame is ERC721 {
   
   /**
    * コンストラクター
+   * デプロイと同時にキャラクターNFTの設定とボスの設定を行います。
    */
   constructor(
-	// プレイヤーが新しく NFT キャラクターを Mint する際に、キャラクターを初期化するために渡されるデータを設定しています。これらの値は フロントエンド（js ファイル）から渡されます。
+	  // プレイヤーが新しく NFT キャラクターを Mint する際に、キャラクターを初期化するために渡されるデータを設定しています。これらの値は フロントエンド（js ファイル）から渡されます。
     string[] memory characterNames,
     string[] memory characterImageURIs,
     uint[] memory characterHp,

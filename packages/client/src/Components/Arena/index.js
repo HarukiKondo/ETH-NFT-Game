@@ -174,10 +174,6 @@ const Arena = ({ characterNFT, setCharacterNFT }) => {
 							</div>
 						</div>
 					</div>
-					{/* <div className="active-players">
-          <h2>Active Players</h2>
-          <div className="players-list">{renderActivePlayersList()}</div>
-        </div> */}
 				</div>
 			)}
 		</div>
