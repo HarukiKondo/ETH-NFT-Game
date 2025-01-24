@@ -66,6 +66,34 @@ yarn --vesion 1.22.22
 
 ## 画面キャプチャ
 
+### ログイン画面
+
+![](./docs/0.png)
+
+### キャラクター NFT ミント画面
+
+![](./docs/1.png)
+
+### キャラクター NFT をミントしている様子
+
+![](./docs/2.png)
+
+### ボスとの対戦画面
+
+![](./docs/5.png)
+
+### ボスと戦っている画面
+
+![](./docs/3.png)
+
+### ボスにダメージを与えたところ
+
+![](./docs/4.png)
+
+### ダメージを受けたキャラクター
+
+![](./docs/6.png)
+
 ### 参考文献
 
 1. [Qita - yarn で Error: self signed certificate in certificate chain と認証エラーが発生したら](https://qiita.com/naru0504/items/06b687d6a174286756da)
