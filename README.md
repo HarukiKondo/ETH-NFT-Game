@@ -2,6 +2,18 @@
 
 section １*lesson-3*スマートコントラクトを作ろう からスタートできる状態にしています。
 
+## 環境情報メモ
+
+以下の環境での動作確認を行っています。
+
+```bash
+WSL:Ubuntu
+git version 2.43.0
+node --version v20.18.0
+npm --version 10.8.2
+yarn --vesion 1.22.22
+```
+
 ## 動かし方
 
 - セットアップ
@@ -51,6 +63,8 @@ section １*lesson-3*スマートコントラクトを作ろう からスター�
     ```bash
     yarn contract local
     ```
+
+## 画面キャプチャ
 
 ### 参考文献
 
