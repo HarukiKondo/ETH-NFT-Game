@@ -36,6 +36,10 @@ describe("MyEpicGame", () => {
 		attackDamage: 50,
 	};
 
+	/**
+	 * NFTをデプロイするための関数
+	 * @returns
+	 */
 	async function deployTextFixture() {
 		const gameContractFactory = await hre.ethers.getContractFactory(
 			"MyEpicGame"
