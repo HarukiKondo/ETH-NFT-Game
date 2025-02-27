@@ -14,6 +14,24 @@ npm --version 10.8.2
 yarn --vesion 1.22.22
 ```
 
+## 技術スタック
+
+## フロントエンド
+
+- React.js
+- JavaScript
+- ethers.js
+
+## スマートコントラクト
+
+- hardhat
+- sepolia (イーサリアムのテストネット)
+- solidity
+- openzeppelin
+- javascript
+- ethers.js
+- chai (ユニットテストツール)
+
 ## 動かし方
 
 - セットアップ
