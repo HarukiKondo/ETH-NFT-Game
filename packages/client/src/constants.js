@@ -1,5 +1,5 @@
 // スマートコントラクトのアドレスを設定する。デプロイする度にセットし直す必要あり。
-const CONTRACT_ADDRESS = "0x2B0B35C0FB6779B79570BD01D15Cb6E1e9117114";
+const CONTRACT_ADDRESS = "0x0bdCf3249b578eB42e80D749B138Cb9C18362EaE";
 
 /**
  * NFT キャラクター の属性をフォーマットしてオブジェクトとして返します。
