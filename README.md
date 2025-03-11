@@ -73,6 +73,10 @@ section １*lesson-3*スマートコントラクトを作ろう からスター�
     yarn contract deploy
     ```
 
+    デプロイしたら新しいコントラクトのアドレスを `client/src/constants.js` で定義されている `CONTRACT_ADDRESS` にコピペして最新化する。
+
+    実際にデプロイしたコントラクトの例
+
     [EtherScan - 0x1b8a77c342215a3B6dA58f380360bBa1446b11E7](https://sepolia.etherscan.io/address/0x1b8a77c342215a3B6dA58f380360bBa1446b11E7)
 
     [OpenSea - 0x1b8a77c342215a3B6dA58f380360bBa1446b11E7](https://testnets.opensea.io/ja/collection/onepiece-97)
