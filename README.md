@@ -77,11 +77,11 @@ section １*lesson-3*スマートコントラクトを作ろう からスター�
 
     実際にデプロイしたコントラクトの例
 
-    [EtherScan - 0x1b8a77c342215a3B6dA58f380360bBa1446b11E7](https://sepolia.etherscan.io/address/0x1b8a77c342215a3B6dA58f380360bBa1446b11E7)
+    [EtherScan - 0x2B0B35C0FB6779B79570BD01D15Cb6E1e9117114](https://sepolia.etherscan.io/address/0x2B0B35C0FB6779B79570BD01D15Cb6E1e9117114)
 
-    [OpenSea - 0x1b8a77c342215a3B6dA58f380360bBa1446b11E7](https://testnets.opensea.io/ja/collection/onepiece-97)
+    [OpenSea - 0x2B0B35C0FB6779B79570BD01D15Cb6E1e9117114](https://testnets.opensea.io/ja/collection/onepiece-111)
 
-    [Gemcase - 0x1b8a77c342215a3B6dA58f380360bBa1446b11E7](https://gemcase.vercel.app/view/evm/sepolia/0x1b8a77c342215a3b6da58f380360bba1446b11e7/1s)
+    [Gemcase - 0x2B0B35C0FB6779B79570BD01D15Cb6E1e9117114](https://gemcase.vercel.app/view/evm/sepolia/0x2B0B35C0FB6779B79570BD01D15Cb6E1e9117114)
 
 ### 参考文献
 
