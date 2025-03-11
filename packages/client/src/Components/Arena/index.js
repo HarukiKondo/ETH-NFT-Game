@@ -57,6 +57,7 @@ const Arena = ({ characterNFT, setCharacterNFT }) => {
   useEffect(() => {
     const { ethereum } = window;
     if (ethereum) {
+      // MyEpicGame コントラクト用のインスタンスを生成する。
       const provider = new ethers.providers.Web3Provider(ethereum);
       const signer = provider.getSigner();
       const gameContract = new ethers.Contract(
@@ -64,6 +65,7 @@ const Arena = ({ characterNFT, setCharacterNFT }) => {
         myEpicGame.abi,
         signer
       );
+      // gameContractインスタンスをステート変数として設定する。
       setGameContract(gameContract);
     } else {
       console.log("Ethereum object not found");
